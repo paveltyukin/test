@@ -1,0 +1,81 @@
+    <table class="Content">
+		<tr>
+		  <td>
+		    <table class="PagetextContainer">  
+          <tr>
+            <td>
+              <div class="ContentSmallSpacer"></div>
+              <div class="p33">
+               
+
+
+<?php 
+if (count($this->news) > 0){
+    foreach($this->news as $id => $news): 
+?>
+            <div class="LiveInner News" id="news_<?= $id ?>">
+                <table class="LiveInnerTable">
+                    <tbody>
+                        <tr>
+                            <td class="kl-tl"></td>
+	                        <td class="kl-tc"></td>
+                            <td class="kl-tr"></td>
+                        </tr>
+	                	<tr>
+                            <td class="kl-ml"></td>
+                            <td class="kl-mc">
+                                <div class="ItemSeparator"></div>
+                                <div class="OpenClose"></div>
+                                <div class="ItemTitle">
+                                    <h2>
+                                        <span><?= $news["name"]; ?></span>
+                                    </h2>
+                                    <span class="ItemDate"><?= $news["date"]; ?></span>
+                                </div>
+                    <table class="ContentTable">
+                          <tr>
+<?php 
+if ($news["image"] != ""){
+?>
+                            <td class="ItemPic">  
+                                <img src="<?= $news["image"]; ?>" alt="" style="width:184px; height:126px;" />
+                            </td>
+<?php 
+}
+?>        
+                            
+                            <td>
+                                <?= $news["text"] ?>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td class="kl-mr"></td>
+                    </tr> 
+                    <tr>
+                      <td class="kl-bl"></td>
+                      <td class="kl-bc"><div class="ItemCommentArrow"></div></td>
+                      <td class="kl-br"></td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+
+                            </div>
+               
+<?php 
+    endforeach;
+}
+else{
+    echo('<div style="text-align:center;">В этом месяце нововстей не было.</div>');
+}
+?>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<?= $this->headCalendarLine() ?>

@@ -1,0 +1,39 @@
+<table class="Content">
+		<tr>
+		  <td>
+		    <div class="ContentSmallSpacer"></div>
+        <table class="PagetextContainer">
+          <tr>
+            <td class="p50l">
+            <h1>Эти люди работают для вас</h1>
+
+            <?php
+                foreach($this->team as $team):
+            ?>
+              <div class="CommandBlock">
+                <div class="Photo">
+                 <img src="<?= $team['team_photo'] ?>" alt="" style="width:120px; height: 120px;">
+                </div>
+                <div class="Text">
+                <h3><?= $team['team_name'] ?></h3>
+                <p class="Duty"><?= $team['team_job'] ?></p>
+                <p class="Description"><?= $team['team_text'] ?></p>
+                </div>
+              </div>
+
+            <?php
+                endforeach;
+            ?>
+
+           </td>
+        </tr>
+          <tr>
+            <td class="p50">
+            <div class="ContentSpacer"></div>
+            <p><a href="/contacts/">Заходите в гости</a>, мы покажем каждого живьём. Некоторых можно покормить с рук</p>
+           </td>
+        </tr>
+        </table>
+		  </td>
+    </tr>
+</table>

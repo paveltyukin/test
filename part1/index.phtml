@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>kill IE (c)</title>
+    <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+    <link href="/adm/css/style.css" type="text/css" rel="stylesheet" />
+      <!--[if lte IE 6]>
+        <link href="/adm/css/ie.css" type="text/css" rel="stylesheet" />
+    <![endif]-->
+</head>
+<body>
+
+
+
+	<div id="global" class="reg">
+		<div id="header">
+			<div id="logo">
+				<a href="#"></a>
+			</div>
+		</div>
+        <form action="/admin/auth/login/" method="post" id="form_auth" >
+    		<div id="all-content">
+    			<h1>Авторизация</h1>
+<?php
+    if ($this->wrong_pass){ ?>
+                <div id="form-login-error" class="form-login-error" style="padding-left: 230px; color: #E94053;">
+                    Неправильный логин или пароль
+                </div>
+<?php  } ?>
+    			<div class="form-block form-error padding-for-input">
+    				<div class="label">
+    					<label for="form-login">Логин</label>
+    				</div>
+    				<div class="form-controls">
+    					<input type="text" name="form_login" id="form_login" class="input-txt" />    				
+    				</div>
+    			</div>
+    			
+    			<div class="form-block padding-for-input">
+    				<div class="label">
+    					<label for="form-password">Пароль</label>
+    				</div>
+    				<div class="form-controls">
+    					<input type="password" name="form_pass" id="form-password" class="input-txt" />    					
+    				</div>
+    			</div>
+    
+    			<div class="form-block">
+    				<div class="label">
+    				</div>
+    				<div class="form-controls form-buttonblock" style="left:5px; width:335px;">
+    					<div style="float:left;display:block;margin-right:44px;">
+                            <input type="submit" value="Войти" style="padding:5px; width:100px;" />
+    					</div>
+    					<a href="/admin/forgot/" class="remember-password">Напомнить пароль</a>
+    				</div>
+    			</div>
+    		</div>
+        </form>
+		<div id="footer">
+			<div id="copy">
+				&copy; 2011 «***!» Яркая рекламная сеть
+			</div>
+		</div>
+	</div>
+</body>
+</html>

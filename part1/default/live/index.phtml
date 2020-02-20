@@ -1,0 +1,192 @@
+	<table class="Content">
+		<tr>
+		  <td>
+<?= $this->headCalendarLine() ?>
+		    <table class="PagetextContainer">  
+          <tr>
+            <td class="p43">
+             
+              <!-- блок новостей -->
+              <div class="LiveBlockDiv News">
+                  <table class="LiveBlockTable">
+                    <tr>
+                      <td class="kl-tl"></td>
+	                	  <td class="kl-tc"><div class="Topline"><h2>Новости<span>Новости</span></h2>
+                      <i class="kl-tr_tr"></i><i class="kl-tl_tr"></i></div></td>
+                      <td class="kl-tr"></td>
+                    </tr>
+	                	<tr>
+                      <td class="kl-ml"></td>
+                      <td class="kl-mc">
+                        <table class="ContentTable">
+<?php                    
+if (count($this->news) > 0){
+    $count = 0;
+    foreach($this->news as $id => $news): 
+        $count++;
+?>      
+                  
+                          <tr <?php if ($count != count($this->news)) echo ('class="dotted"'); ?>>
+                            <td>
+                                <?= $news["name"] ?>
+                            <div class="ItemInfo">
+                                <span class="ItemDate float-left"><?= $news["date"] ?> </span> 
+                                <div class="ItemMore float-right"><a href="/news/<?= $this->year ?>/<?= $this->month ?>/#<?= $id ?> ">Весь текст</a></div></div>
+                            </td>
+                          </tr>
+<?php 
+    endforeach;
+}
+else{
+    echo('<tr><td><div style="text-align:center; padding: 10px;">В этом месяце новостей не было.</div></td></tr>');
+}
+?>
+                        </table>
+                      </td>
+                      <td class="kl-mr"></td>
+                    </tr>
+                    <tr>
+                      <td class="kl-bl"></td>
+                      <td class="kl-bc">
+                        <div style="position: relative"><i class="kl-br_w"></i><i class="kl-bl_w"></i></div></td>
+                      <td class="kl-br"></td>
+                    </tr>
+                  </table>
+               </div> 
+               <!-- конец блока новостей -->               
+
+
+              <!-- блок событий -->
+              <div class="LiveBlockDiv Events">
+                  <table class="LiveBlockTable">
+                    <tr>
+                      <td class="kl-tl"></td>
+	                	  <td class="kl-tc"><div class="Topline"><h2>События<span>События</span></h2>
+                      <i class="kl-tr_tr"></i><i class="kl-tl_tr"></i></div></td>
+                      <td class="kl-tr"></td>
+                    </tr>
+	                	<tr>
+                      <td class="kl-ml"></td>
+                      <td class="kl-mc">
+                        <table class="ContentTable">
+<?php
+if (count($this->events) > 0){
+    foreach($this->events as $id => $event):
+?>
+                          <tr>
+                            <td>
+                            <h4><?= $event["name"] ?></h4>
+                            <?= $event["text"] ?>
+                            
+                            <div class="ItemInfo"><span class="ItemDate float-left">Добавлено <?= $event["date_add"] ?></span> <div class="ItemMore float-right"><a href="/events/<?= $this->year ?>/<?= $this->month ?>/#event_<?= $id ?>">Подробности</a></div></div>
+                            </td>
+                            <td class="ItemDateInfo">
+                              <span class="ItemBigDate"><?= $event["date_start_day"] ?></span> <span class="ItemMonth"><?= $event["date_start_month"] ?></span>
+                              
+                            <?php 
+                                if ($event["day_left"] > 0){
+                                    $className = ($event["day_left"] == 1) ? "Alert" : (($event["day_left"] <= 7) ? "Warning" : "");
+                                    echo('<div class="ItemDaysTo ' . $className . '"><span class="font9 lh9">' . $event["left_text"] . '</span><span class="ItemBigDays">' . $event["day_left"] . '</span>' . $event["day_text"] . '</div>');
+                                }
+                                elseif ($event["day_left"] == 0){
+                                    echo('<div class="ItemDaysTo Alert"><span class="font9 lh9">Сегодня</span></div>');
+                                }
+                                else{
+                                    echo('<div class="ItemDaysTo"><span class="font9 lh9">Прошло</span><span class="ItemBigDays">' . abs($event["day_left"]) . '</span>' . $event["day_text"] . ' назад</div>');
+                                }
+                            ?>
+                             </td>
+                          </tr>
+                          <tr>
+                            <td class="ItemPlaceInfo" colspan="2">
+                            <table>
+                              <tr>
+                                <td class="ItemCity"><?= $event["city"] ?></td>
+                                <td class="ItemAddress"><?= $event["address"] ?></td>
+                                <td class="ItemIllcome"><span>Я приду!</span></td>
+                              </tr>
+                            </table>
+                            </td>
+                          </tr>
+<?php
+    endforeach;
+}
+else{
+    echo('<tr><td><div style="text-align:center; padding: 10px; font-size:12px; ">В этом месяце события не найдены.</div></td></tr>');
+}
+?>
+                                   
+                        </table>
+                      </td>
+                      <td class="kl-mr"></td>
+                    </tr>
+                    <tr>
+                      <td class="kl-bl"></td>
+                      <td class="kl-bc">
+                        <div style="position: relative"><i class="kl-br_w"></i><i class="kl-bl_w"></i></div></td>
+                      <td class="kl-br"></td>
+                    </tr>
+                  </table>
+               </div> 
+               <!-- конец блока событий -->
+               
+              <div class="clr"></div>
+               
+              <!-- блок вакансий -->
+              <div class="LiveBlockDiv Job">
+                  <table class="LiveBlockTable">
+                    <tr>
+                      <td class="kl-tl"></td>
+	                	  <td class="kl-tc"><div class="Topline"><h2>Работа в *******е<span>Работа в *******е</span></h2>
+                      <i class="kl-tr_tr"></i><i class="kl-tl_tr"></i></div></td>
+                      <td class="kl-tr"></td>
+                    </tr>
+	                	<tr>
+                      <td class="kl-ml"></td>
+                      <td class="kl-mc">
+                        <table class="ContentTable">
+<?php 
+if (count($this->job) > 0){
+    $count = 0;
+    foreach($this->job as $job):
+        $count++;
+?>
+                          <tr <?php if ($count != count($this->job)) echo('class="dotted"')?>>
+                            <td>
+                            <h4><?= $job["job_name"] ?></h4>
+                            <p><?= nl2br($job["job_simple_text"]) ?></p>
+                            <div class="ItemInfo"><span class="ItemDate float-left"><?= $job["date"] ?></span> <div class="ItemMore float-right"><a href="/job/#<?= $job["job_id"] ?>">Весь текст</a></div></div>
+                            </td>
+                          </tr>
+<?php
+    endforeach;
+}
+else{
+    echo("<tr><td>На данный момент у нас нет вакансий.</td></tr>");
+} 
+?>
+              
+                        </table>
+                      </td>
+                      <td class="kl-mr"></td>
+                    </tr>
+                    <tr>
+                      <td class="kl-bl"></td>
+                      <td class="kl-bc">
+                        <div style="position: relative"><i class="kl-br_w"></i><i class="kl-bl_w"></i></div></td>
+                      <td class="kl-br"></td>
+                    </tr>
+                  </table>
+               </div> 
+               <!-- конец блока вакансий -->                 
+                     
+
+
+            </td>
+          </tr>
+        </table>
+		  </td>
+    </tr>
+</table> 
+
+<?= $this->headCalendarLine() ?>                                                                                            
