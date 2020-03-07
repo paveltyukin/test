@@ -24,7 +24,7 @@
     			<h1>Авторизация</h1>
 <?php
     if ($this->wrong_pass){ ?>
-                <div id="form-login-error" class="form-login-error" style="padding-left: 230px; color: #E94053;">
+                <div id="form-login-error" class="form-login-error">
                     Неправильный логин или пароль
                 </div>
 <?php  } ?>
@@ -49,9 +49,9 @@
     			<div class="form-block">
     				<div class="label">
     				</div>
-    				<div class="form-controls form-buttonblock" style="left:5px; width:335px;">
-    					<div style="float:left;display:block;margin-right:44px;">
-                            <input type="submit" value="Войти" style="padding:5px; width:100px;" />
+    				<div class="form-controls form-buttonblock">
+    					<div>
+                            <input type="submit" value="Войти"/>
     					</div>
     					<a href="/admin/forgot/" class="remember-password">Напомнить пароль</a>
     				</div>

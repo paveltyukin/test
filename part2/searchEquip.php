@@ -1,15 +1,13 @@
 <?php
-	include "/srv/www/portal/ini.php";
-	include $rootd."connectBase.php";
-	include $rootd."lib.php";
+	include "lib.php";
 
 	$userId=getUserFromSession($os);
 	if ($userId < 0){
-		echo "PORTAL_USER_LOGOUT";
+		echo "USER_LOGOUT";
 		return;
 	}
 
-	$os2 = @oci_connect("SYSTEM","guard",$NSDIP.":1521/ntd.bil");
+	$os2 = @oci_connect("...","...");
 	if (!$os2){
 		print_r("SERVER_ERROR");
 		return;
